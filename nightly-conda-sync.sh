@@ -3,7 +3,7 @@
 set -e
 
 # Vars
-noext=$(echo $0 | rev | cut -d. -f2- | rev)
+noext=$(basename $0 | rev | cut -d. -f2- | rev)
 logfile=/var/log/${noext}/${noext}-$(date "+%F_%H-%M-%S").log
 gitcmd=/usr/bin/git
 
