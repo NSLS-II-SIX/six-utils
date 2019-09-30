@@ -1,17 +1,22 @@
 #!/bin/bash
 
-cd ~/science_comm
+for d in $HOME/science_comm $HOME/.ipython/profile_collection; do
+    pushd $d
 
-# Check the status of git:
-git status
-git branch -avv
-git remote -v
-git log -n 3
+    # Check the status of git:
+    git status
+    git branch -avv
+    git remote -v
+    git log -n 3
 
-# Add **ALL** files to be committed:
-git add .
+    # Add **ALL** files to be committed:
+    git add .
 
-git commit -m "[$(date '+%F %H:%M:%S')]: Automatic commit at SIX from $(hostname)"
+    git commit -m "[$(date '+%F %H:%M:%S')]: Automatic commit at SIX from $(hostname)"
 
-git push origin master
+    git push origin master
+
+    popd
+    echo -e "\n\n"
+done
 
