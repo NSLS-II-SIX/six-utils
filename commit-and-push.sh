@@ -12,7 +12,7 @@ for d in $HOME/science_comm $HOME/.ipython/profile_collection; do
     # Add **ALL** files to be committed:
     git add .
 
-    git commit -m "[$(date '+%F %H:%M:%S')]: Automatic commit at SIX from $(hostname)"
+    git commit -m "[$(date '+%F %H:%M:%S')]: Manual commit at SIX from $(hostname)"
 
     git push origin master
 
