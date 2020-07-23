@@ -12,6 +12,11 @@ rm -f $logfile
 
 echo "Log file: $logfile"
 
+# Check host info
+uname -a >> $logfile
+hostname >> $logfile
+lsb_release -a >> $logfile
+
 # Check the status of the repos and pull
 
 check_status(){
