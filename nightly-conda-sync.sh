@@ -12,6 +12,11 @@ rm -f $logfile
 
 echo "Log file: $logfile"
 
+# Check host info
+uname -a >> $logfile
+hostname >> $logfile
+lsb_release -a >> $logfile
+
 # Check the status of the repos and pull
 
 check_status(){
@@ -41,5 +46,24 @@ $(check_status)
 EOF
     popd >/dev/null 2>&1
 done
+
+. /etc/profile.d/conda.sh
+# mrakitin's test env:
+# conda activate /root/conda_envs/analysis-2019-3.0.1-nightly-mrakitin-test
+conda activate /opt/conda_envs/analysis-2019-3.0.1-nightly
+
+conda env list >> $logfile
+conda list >> $logfile
+pip list >> $logfile
+
+# Install the latest version of edrixs from the nsls2forge conda channel:
+conda install edrixs \
+    -c https://conda.anaconda.org/nsls2forge \
+    -c https://repo.anaconda.com/pkgs/main \
+    --override-channels --no-channel-priority -y \
+    >> $logfile
+
+conda list >> $logfile
+pip list >> $logfile
 
 exit 0

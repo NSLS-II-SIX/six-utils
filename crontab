@@ -6,4 +6,6 @@ https_proxy="http://proxy:8888"
 # Execute "git clone --all" for the clones of rixs and sixtools every night at 2 am.
 # See https://crontab.guru/#00_02_*_*_*
 00 02 * * * bash /opt/conda_envs/src/six-utils/nightly-conda-sync.sh
+# Another sync at 5:30 pm every day
+30 17 * * * bash /opt/conda_envs/src/six-utils/nightly-conda-sync.sh
 
